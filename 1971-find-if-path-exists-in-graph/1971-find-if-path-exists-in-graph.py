@@ -21,7 +21,7 @@ class Solution:
             current=q.popleft()
             if current == destination:  #if its the end then we can return True
                 return True
-            elif current in neighbors and not visited[current]:
+            elif  not visited[current]:
                 q.extend(neighbors[current]) 
             visited[current] = True  
         return False
