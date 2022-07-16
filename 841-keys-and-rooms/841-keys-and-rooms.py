@@ -16,6 +16,5 @@ class Solution:
             if current in visitable:
                 for i in rooms[current]:
                     visitable.add(i)
-            print(visitable)
         
         return len(visitable)==n
