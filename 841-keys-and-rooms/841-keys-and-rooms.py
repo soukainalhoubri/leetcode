@@ -1,6 +1,8 @@
 from collections import deque
 class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
+        if len(rooms[0])==0:
+            return False
         q=deque()
         n=len(rooms)
         q.append(0)
