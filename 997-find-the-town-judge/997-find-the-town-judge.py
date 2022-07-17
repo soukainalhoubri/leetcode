@@ -15,3 +15,6 @@ class Solution:
             if trust_count[i]==n-1:
                 return i
         return -1
+    #let n=len(trust)
+    #time_compleity: T=O(n)
+    #space_complexity: S=O(n)oik;
