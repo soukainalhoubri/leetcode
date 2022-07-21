@@ -16,9 +16,9 @@ class Solution:
         #we will use a dictionnary: creating an adjaceny list
         
         importance={i.id:[i.importance,i.subordinates] for i in employees}#O(V) T&S
-        visited=set()#O(V) 
-        visitable=set()#O(V) 
-        visitable.add(id)
+        # visited=set()#O(V) 
+        # visitable=set()#O(V) 
+        # visitable.add(id)
         q=deque()#O(V) 
         q.append(id)
         answer=0#O(1) 
