@@ -7,8 +7,6 @@
 from collections import deque
 class Solution:
     def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
-        if not root.left and not root.right:
-            return 0
         q=deque()
         q.append(root)
         leaves_sum=0
