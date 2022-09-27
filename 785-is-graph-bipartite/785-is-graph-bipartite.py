@@ -1,25 +1,43 @@
 from collections import deque
 class Solution:
     def isBipartite(self, graph: List[List[int]]) -> bool:
-        #I need to keep track of all of the node colors
-        #I do BFS, and change color
-        #there is no mention that the graph can't be disconnected, se we assume it can
-        colors={i:-1 for i in range(len(graph))}
-        n=len(graph)
+        #graph: undirected, unconnected, 
+        #BFS, i will iterate over every node, olor it, and then go through its neghbors.
+        
         visited=set()
-        colors[0]=1
+        colors ={0:1}
         for i in range(len(graph)):
+            if i not in colors:
+                colors[i]=1
             q=deque()
             q.append(i)
             while q:
                 current=q.popleft()
-                visited.add(i)
+                visited.add(current)
                 for adj in graph[current]:
-                    if colors[adj]==-1:
-                        colors[adj]=1-colors[current]
-                    elif colors[adj]==colors[current]:
+                    if adj in colors and colors[adj]==colors[current]:
                         return False
-            if len(visited)==n:
+                    colors[adj]=1-colors[current]
+                    if adj not in visited:
+                        q.append(adj)
+            if len(visited)==len(graph):
                 return True
+        return True
+        '''
+        if they're colored with same color, I return False, else, I olor them with a different color
+        '''
+        '''
         
-            
+        for instance:
+        
+        0: A: visited
+        1: B: 
+        2:B
+        3:B
+        => False
+        
+        0:
+        
+        
+        
+        '''
