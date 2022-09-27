@@ -1,22 +1,16 @@
 from collections import deque
 class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
-        if len(rooms[0])==0:
-            return False
-        q=deque()
-        n=len(rooms)
-        q.append(0)
+        #this is like checking if my graph is disconnected
+        #I will start with node 0, and then visit all of its neighbors, I keep track of visited nodes and so on.
+        #I will use a queue to enqueue the node to be proccessed, if it gets emptied without visiting all of the nodes, this means I can't visit all of the nodes
         visited=set()
-        visitable=set(rooms[0])
-        visitable.add(0)
+        q=deque()
+        q.append(0)
         while q:
             current=q.popleft()
             visited.add(current)
-            for i in rooms[current]:
-                if i not in visited:
-                    q.append(i)
-            if current in visitable:
-                for i in rooms[current]:
-                    visitable.add(i)
-        
-        return len(visitable)==n
+            for room in rooms[current]:
+                if room not in visited:
+                    q.append(room)
+        return len(visited)==len(rooms)
