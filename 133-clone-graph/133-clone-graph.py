@@ -14,10 +14,9 @@ class Solution:
                 if neighbor not in copies:
                     newNode=Node(neighbor.val)
                     copies[neighbor]=newNode
-                    copies[node].neighbors.append(newNode)
+                    # copies[node].neighbors.append(newNode)
                     dfs(neighbor,copies)
-                else:
-                    copies[node].neighbors.append(copies[neighbor])
+                copies[node].neighbors.append(copies[neighbor])
                     
         if not node:
             return None
