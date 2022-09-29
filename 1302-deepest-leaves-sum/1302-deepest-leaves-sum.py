@@ -10,14 +10,15 @@ class Solution:
         q=deque()
         q.append(root)
         while q:
-            _sum=0
-            level=len(q)
-            for i in range(level):
+            current_level_length=len(q)
+            current_level=[]
+            for _ in range(current_level_length):
                 current=q.popleft()
-                _sum+=current.val
+                current_level.append(current.val)
                 if current.left:
                     q.append(current.left)
                 if current.right:
                     q.append(current.right)
-        return _sum
-        
+        return sum(current_level)
+                
+                
