@@ -8,16 +8,13 @@ class Employee:
 """
 from collections import deque
 class Solution:
+    importance=0
     def getImportance(self, employees: List['Employee'], id: int) -> int:
         ids={employee.id:employee for employee in employees}
-        importance=0
-        q=deque()
-        q.append(ids[id])
-        while q:
-            current=q.popleft()
-            importance+=current.importance
-            for sub in current.subordinates:
-                q.append(ids[sub])
-                
-        return importance
-            
+        self.importance+=ids[id].importance
+        def dfs(identifier):
+            for sub in ids[identifier].subordinates:
+                self.importance+=ids[sub].importance
+                dfs(sub)
+        dfs(id)
+        return self.importance
